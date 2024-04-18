@@ -12,7 +12,7 @@ const AddNewCategory = () => {
         <Input label={"Название категории"} name={"category"} type={"string"} />
         <div
           className={
-            "flex w-full bg-primary-1 text-white justify-center py-3 rounded-2xl "
+            " cursor-pointer flex w-full bg-primary-1 text-white justify-center py-3 rounded-2xl "
           }
         >
           Добавить

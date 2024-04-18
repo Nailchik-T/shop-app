@@ -1,13 +1,18 @@
 import { IProductSingleData } from "@/interfaces/IProduct.interface";
 import { FC } from "react";
 import Image from "next/image";
+import { CiShoppingBasket } from "react-icons/ci";
 
 const ProductCard: FC<IProductSingleData> = ({ product }) => {
   return (
     <div className="w-80 bg-card-1 px-6 py-4 rounded-2xl ">
-      <div className="bg-font-dark-blue inline-block text-white text-xs py-2.5 px-4  rounded-2xl font-bold">
-        {product.category}
+      <div className={"flex justify-between cursor-pointer"}>
+        <div className="bg-font-dark-blue inline-block text-white text-xs py-2.5 px-4  rounded-2xl font-bold">
+          {product.category}
+        </div>
+        {product.available ? <CiShoppingBasket className={"text-2xl"} /> : ""}
       </div>
+
       <Image
         width={300}
         height={37}
