@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.scss";
-
+import Header from "@/comonents/Header/Header";
+import { CiShoppingBasket } from "react-icons/ci";
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["100", "300", "400", "500", "700", "900"],
@@ -16,9 +17,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navLinks = [
+    { id: 1, name: "Каталог", path: "/catalog" },
+    { id: 2, name: "О нас", path: "#about" },
+    { id: 4, name: <CiShoppingBasket className="text-2xl" />, path: "/auth" },
+  ];
+
   return (
     <html lang="en">
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <Header navItems={navLinks} />
+        {children}
+      </body>
     </html>
   );
 }

@@ -7,11 +7,7 @@ import Link from "next/link";
 import AboutShop from "@/ui/about-shop/AboutShop";
 import Header from "@/comonents/Header/Header";
 import { CiShoppingBasket } from "react-icons/ci";
-const navLinks = [
-  { id: 1, name: "Каталог", path: "/catalog" },
-  { id: 2, name: "О нас", path: "#about" },
-  { id: 4, name: <CiShoppingBasket className="text-2xl" />, path: "/auth" },
-];
+
 export default function Home() {
   const product: IProductSingleData = {
     product: {
@@ -45,7 +41,6 @@ export default function Home() {
   };
   return (
     <>
-      <Header navItems={navLinks} />
       <main>
         <TextImageSection
           image={"/bg.jpeg"}

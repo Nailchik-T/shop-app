@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/comonents/Header/Header";
 import Sidebar from "@/comonents/Sidebar/Sidebar";
 
 export const metadata: Metadata = {
@@ -14,7 +13,6 @@ export default function AdminLayout({
 }>) {
   return (
     <body className={"bg-gray-50"}>
-      <Header />
       <div className={"flex items-center"}>
         <Sidebar />
         {children}

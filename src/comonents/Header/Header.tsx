@@ -31,23 +31,26 @@ const Header: FC<Props> = ({ navItems }) => {
           alt={"магазин специй"}
         />
       </Link>
-
-      <nav>
-        <ul className={"flex items-center justify-center  gap-10"}>
-          {navItems?.map((link) => {
-            return (
-              <li key={link.id}>
-                <Link
-                  href={link.path}
-                  className={`text-font-dark-blue font-light ${isActive(link.path) ? "active" : ""}`}
-                >
-                  {link.name}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      {navItems ? (
+        <nav>
+          <ul className={"flex items-center justify-center  gap-10"}>
+            {navItems?.map((link) => {
+              return (
+                <li key={link.id}>
+                  <Link
+                    href={link.path}
+                    className={`text-font-dark-blue font-light ${isActive(link.path) ? "active" : ""}`}
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      ) : (
+        ""
+      )}
     </header>
   );
 };
