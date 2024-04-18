@@ -1,7 +1,5 @@
 import Input from "@/ui/input/Input";
 
-type Props = {};
-
 const AddNewCategory = () => {
   return (
     <div className={"w-3/5 flex items-center "}>

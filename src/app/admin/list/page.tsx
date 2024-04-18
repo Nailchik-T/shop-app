@@ -1,8 +1,7 @@
 import ProductCard from "@/ui/product-card/ProductCard";
 import { IProductSingleData } from "@/interfaces/IProduct.interface";
-import Image from "next/image";
 
-const Catalog = () => {
+const List = () => {
   const product: IProductSingleData = {
     product: {
       id: 1,
@@ -35,14 +34,7 @@ const Catalog = () => {
   };
   return (
     <>
-      <Image
-        width={120}
-        height={20}
-        className={"ml-10 mb-5"}
-        src={"/offer.svg"}
-        alt={"image"}
-      />
-      <div className="flex flex-row justify-between px-10">
+      <div className="flex flex-row justify-between px-10 flex-wrap gap-3">
         <ProductCard product={product.product} />
         <ProductCard product={product1.product} />
         <ProductCard product={product2.product} />
@@ -51,5 +43,4 @@ const Catalog = () => {
     </>
   );
 };
-
-export default Catalog;
+export default List;

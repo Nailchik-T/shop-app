@@ -13,7 +13,7 @@ export default function AdminLayout({
 }>) {
   return (
     <body className={"bg-gray-50"}>
-      <div className={"flex items-center"}>
+      <div className={"flex"}>
         <Sidebar />
         {children}
       </div>
