@@ -1,5 +1,7 @@
+import Sidebar from "@/comonents/Sidebar/Sidebar";
+
 const Admin = () => {
-  return <div>Im admin</div>;
+  return <></>;
 };
 
 export default Admin;

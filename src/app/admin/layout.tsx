@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/comonents/Header/Header";
+import Sidebar from "@/comonents/Sidebar/Sidebar";
 
 export const metadata: Metadata = {
   title: "Магазин специй",
@@ -12,10 +13,13 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <body className={"bg-gray-50"}>
       <Header />
-      {children}
-    </>
+      <div className={"flex items-center"}>
+        <Sidebar />
+        {children}
+      </div>
+    </body>
   );
 }
 
