@@ -1,44 +1,33 @@
+"use client";
 import { FaArrowRight } from "react-icons/fa";
 import ProductCard from "@/ui/product-card/ProductCard";
-import { IProductSingleData } from "@/interfaces/IProduct.interface";
 import TextImageSection from "@/ui/text-image-section/TextImageSection";
 import Banner from "@/ui/banner/Banner";
 import Link from "next/link";
 import AboutShop from "@/ui/about-shop/AboutShop";
-import Header from "@/comonents/Header/Header";
-import { CiShoppingBasket } from "react-icons/ci";
+import { IProduct } from "@/interfaces/IProduct.interface";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const product: IProductSingleData = {
-    product: {
-      id: 1,
-      name: "Organic Almonds",
-      image: "/image.png",
-      cost: 1300,
-      category: "Приправа",
-      available: true,
-    },
-  };
-  const product1: IProductSingleData = {
-    product: {
-      id: 1,
-      name: "Помидоры",
-      image: "/IMAGE3.png",
-      cost: 1300,
-      category: "Овощи",
-      available: true,
-    },
-  };
-  const product2: IProductSingleData = {
-    product: {
-      id: 1,
-      name: "Organic Almonds",
-      image: "/IMAGE2.png",
-      cost: 4300,
-      category: "Перец",
-      available: false,
-    },
-  };
+  const [products, setProducts] = useState<IProduct[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/product"); // Замените 'YOUR_API_ENDPOINT' на адрес вашего сервера API
+        if (!response.ok) {
+          throw new Error("Failed to fetch products");
+        }
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+    fetchData();
+  }, []);
+  const latestProducts = products.slice(-5);
+
   return (
     <>
       <main>
@@ -60,10 +49,9 @@ export default function Home() {
         </Link>
 
         <div className="flex flex-row justify-between px-10">
-          <ProductCard product={product.product} />
-          <ProductCard product={product1.product} />
-          <ProductCard product={product2.product} />
-          <ProductCard product={product2.product} />
+          {latestProducts.map((productData, index) => (
+            <ProductCard key={index} product={productData} />
+          ))}
         </div>
         <AboutShop
           image={"/about.jpg"}

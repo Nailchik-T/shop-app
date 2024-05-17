@@ -20,7 +20,11 @@ export default function RootLayout({
   const navLinks = [
     { id: 1, name: "Каталог", path: "/catalog" },
     { id: 2, name: "О нас", path: "#about" },
-    { id: 4, name: <CiShoppingBasket className="text-2xl" />, path: "/auth" },
+    {
+      id: 4,
+      name: <CiShoppingBasket className="text-2xl" />,
+      path: "/basket",
+    },
   ];
 
   return (

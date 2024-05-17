@@ -1,13 +1,20 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { router } from "next/client";
+import Cookies from "js-cookie";
 
 const NavLinks = [
   { id: 1, name: "Добавление товара", path: "/admin/add-new-product" },
   { id: 2, name: "Добавление категории", path: "/admin/add-new-category" },
   { id: 3, name: "Список товаров", path: "/admin/list" },
-  { id: 4, name: "Выход", path: "admin/exit" },
+  { id: 4, name: "Выход", path: "/" },
 ];
+
+const handleLogout = () => {
+  Cookies.remove("loggedin");
+  router.push("/");
+};
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -20,12 +27,22 @@ const Sidebar = () => {
           {NavLinks.map((link) => {
             return (
               <li key={link.id}>
-                <Link
-                  href={link.path}
-                  className={`p-2 font-light text-font-dark-blue ${isActive(link.path) ? "bg-card-3 rounded-lg " : ""}`}
-                >
-                  {link.name}
-                </Link>
+                {link.name === "Выход" ? (
+                  <Link
+                    href={link.path}
+                    onClick={handleLogout}
+                    className={`p-2 font-light text-font-dark-blue ${isActive(link.path) ? "bg-card-3 rounded-lg " : ""}`}
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <Link
+                    href={link.path}
+                    className={`p-2 font-light text-font-dark-blue ${isActive(link.path) ? "bg-card-3 rounded-lg " : ""}`}
+                  >
+                    {link.name}
+                  </Link>
+                )}
               </li>
             );
           })}

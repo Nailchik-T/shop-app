@@ -12,13 +12,9 @@ export default function AdminLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <body className={"bg-gray-50"}>
-      <div className={"flex"}>
-        <Sidebar />
-        {children}
-      </div>
-    </body>
+    <div className={`flex  "justify-center" : ""}`}>
+      <Sidebar />
+      {children}
+    </div>
   );
 }
-
-AdminLayout.layout = false;
